@@ -1,0 +1,77 @@
+{% extends 'company/include/base.html' %}
+{% load static %}
+{% block content-body %}
+
+<div class="content-body">
+	<div class="container-fluid">
+		<div class="row page-titles">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active"><a href="javascript:void(0)">Post</a></li>
+				<li class="breadcrumb-item"><a href="javascript:void(0)">Job</a></li>
+			</ol>
+		</div>
+	</div>
+		<!-- row -->
+    <div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Post Job</h4>
+					</div>
+				
+					<div class="col-xl-12">
+						<!-- Tab Content START -->
+						<div class="tab-content">
+						   <!-- Personal Information content START -->
+						   <div class="tab-pane show active" id="tab-1">
+							  <div class="card shadow">
+								 <!-- Card header -->
+								 {% include 'company/include/message.html' %}
+								 <div class="card-header border-bottom">
+									
+									<form action="{% url 'add_job' %}" method="POST" enctype="multipart/form-data">
+									   {% csrf_token %}
+									   <div >
+										  
+										  <div class="mb-3 col-md-12">
+											 <label class="form-label">Job Title</label>
+											 <input type="text"  class="form-control" value= "" name="job_title" required>
+										  </div>
+										  <div class="mb-3 col-md-12">
+											<label class="form-label">Skills</label>
+											<input type="text"  class="form-control" value= "" name="skills" required>
+										 </div>
+										 <div class="mb-3 col-md-12">
+											<label class="form-label">Experience</label>
+											<input type="text"  class="form-control" value= "" name="experience" required>
+										 </div>
+									   <div >
+										  <div class="mb-3 col-md-12">
+											 <label class="form-label"> Job description</label>
+											 <textarea class="form-control" id="exampleFormControlTextarea4" rows="3" name="job_description" required></textarea>
+										  </div>
+										  <div class="mb-3 col-md-12">
+											 <label class="form-label">Address</label>
+											 <input type="text"  class="form-control" value = "" name="address">
+										  </div>
+										 
+									   </div>
+									   <div class = "col-md-6">
+										  <button type="submit" class= "btn btn-primary">Post</button>
+									   </div>
+									</form>
+								 </div>
+							  </div>
+						   </div>
+						</div>
+					 </div>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+
+	 </div>
+
+{% endblock content-body %}

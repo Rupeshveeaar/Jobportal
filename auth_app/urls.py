@@ -14,6 +14,7 @@ urlpatterns = [
 ############ Company #########################
     path('signup_company' , Signup_company , name='Signup_company'),
     path('compay' , Company_Profile , name='company'),
+    path('add_job' , add_job , name='add_job'),
     path('update_company_profile' , Update_Company , name='update_company_profile'),
 
 ############ Student #########################

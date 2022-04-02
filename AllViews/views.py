@@ -116,3 +116,16 @@ def Update_Student(request):
     return render(request, 'student/update_student_profile.html',context)
   
 
+######################## job view ############################
+
+def add_job(request):
+    if request.method == "POST":
+        job_title=request.POST.get('job_title')
+        skills=request.POST.get('skills')
+        experience=request.POST.get('experience')
+        job_description=request.POST.get('job_description')
+        address=request.POST.get('address')
+        jobs = Job(job_title=job_title, skills=skills, experience=experience, job_description=job_description, address=address)
+        jobs.save()
+        messages.success(request,"Job Posted Successfully....... ")
+    return render(request,'company/add_job.html')

@@ -18,3 +18,6 @@ admin.site.register(Student ,StudentUserAdmin )
 class CompanyUserAdmin(admin.ModelAdmin):
     list_display=('company_name' ,)
 admin.site.register(Company ,CompanyUserAdmin )
+
+
+admin.site.register(Job )
