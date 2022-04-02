@@ -1,0 +1,134 @@
+﻿{% extends 'student/include/base.html' %}
+{% load static %}
+{% block content-body %}
+
+<div class="content-body">
+	<div class="container-fluid">
+		<div class="row page-titles">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active"><a href="javascript:void(0)">Update</a></li>
+				<li class="breadcrumb-item"><a href="javascript:void(0)">Profile</a></li>
+			</ol>
+		</div>
+	</div>
+	 <div class="container-fluid">
+		
+		<div class="card">
+			<div class="card-header">
+				<h4 class="card-title">Profile</h4>
+			</div>
+			<div class="row page-titles">
+				<div class="col-xl-10shadow ">
+					
+					<!-- Tab START -->
+					<div class="col-xl-12 col-xxl-7 col-sm-7">
+						<div class="update-profile d-flex">
+							<img src="/media/{{user.profile_pic}}" alt=""> 
+						</div>
+					</div>
+					<hr>
+					
+					<div class="row letter-spacing: 2px;">
+					  
+					   <div class="col mx-3">
+						  <label for="" class="font-weight-bold "><strong>Name</strong></label>
+						  <p class="text-primary">{{user.first_name|capfirst}} {{user.last_name|capfirst}}</p>
+						  <label for=""><strong>User</strong></label>
+						  <p class="text-primary">{{user.username | capfirst}} </p>						   
+						  <label for=""><strong>Email</strong></label>
+						  <p class="text-primary">{{user.email}}</p>
+						  <label for=""><strong>Contact</strong></label>
+						  <p class="text-primary">+91 {{con}}</p>
+					   </div>
+					   
+					</div>
+					
+				 </div>
+				</div>
+			</div>
+			
+		<!-- row -->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Update Profile</h4>
+					</div>
+				
+					<div class="col-xl-12">
+						<!-- Tab Content START -->
+						<div class="tab-content">
+						   <!-- Personal Information content START -->
+						   <div class="tab-pane show active" id="tab-1">
+							  <div class="card shadow">
+								 <!-- Card header -->
+								 {% include 'student/include/message.html' %}
+								 <div class="card-header border-bottom">
+									
+									<form action="{% url 'update_student_profile' %}" method="POST" enctype="multipart/form-data">
+									   {% csrf_token %}
+									   <div >
+										  <div class="mb-3 cod-md- ">
+											 <label class="form-label"> Profile Pic</label>
+											 <input type="file" class="form-control" name = "profile_pic" value="/media/{{request.user.profile_pic}}" required>
+										  </div>
+										  <div class="mb-3 col-md-12">
+											 <label class="form-label"> First Name</label>
+											 {% comment %} <p>{{user.username}}</p {% endcomment %}
+											 <input type="text"  class="form-control" value= "{{request.user.first_name | capfirst}}" name="first_name" required>
+										  </div>
+										  <div class="mb-3 col-md-12">
+											<label class="form-label"> Last Name</label>
+											{% comment %} <p>{{user.username}}</p {% endcomment %}
+											<input type="text"  class="form-control" value= "{{request.user.last_name | capfirst}}" name="last_name" required>
+										 </div>
+										  <div class="mb-3 col-md-12">
+											<label class="form-label">Username</label>
+											<input type="text"  class="form-control" value = "{{request.user.username}}" name="username" required readonly>
+										 </div>
+										 <div class="mb-3 col-md-12">
+											<label class="form-label"> Email</label>
+											<input type="email"  class="form-control" value = "{{request.user.email}}" name="email" required readonly >
+										 </div>
+										  <div class="mb-3 col-md-12">
+											<label class="form-label">Skills</label>
+											{% comment %} <p>{{user.username}}</p {% endcomment %}
+											<input type="text"  class="form-control" value= "{{skl}}" name="skills" required>
+										 </div>
+										 <div class="mb-3 col-md-12">
+											<label class="form-label">Experience</label>
+											{% comment %} <p>{{user.username}}</p {% endcomment %}
+											<input type="text"  class="form-control" value= "{{exp}}" name="experience" required>
+										 </div>
+										  <div class="mb-3 col-md-12">
+											<label class="form-label">Address</label>
+											{% comment %} <p>{{user.username}}</p {% endcomment %}
+											<input type="text"  class="form-control" value= "{{add}}" name="address" required>
+										 </div>
+										 <div class="mb-3 col-md-12">
+											<label class="form-label">Contact</label>
+											{% comment %} <p>{{user.username}}</p {% endcomment %}
+											<input type="text"  class="form-control" value= "{{con}}" name="contact" required>
+											{% comment %} <input type="text"  class="form-control" value= "" name="id" > {% endcomment %}
+											</div>
+									   <div class = "col-md-6">
+										  <button type="submit" class= "btn btn-primary">Update Profile</button>
+									   </div>
+									</form>
+								 </div>
+								 <!-- MyCode -->
+								 <!-- EndMycode -->
+							  </div>
+						   </div>
+						</div>
+						<!-- Tab Content END -->
+					 </div>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+
+	 </div>
+
+{% endblock content-body %}
